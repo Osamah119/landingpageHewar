@@ -42,14 +42,7 @@ import {
   Person as PersonIcon
 } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
-import { LanguageContext } from '../contexts/LanguageContext';
-
-// Custom hook for language
-const useLanguage = () => {
-  const { language } = useContext(LanguageContext);
-  return [language === 'ar'];
-};
+import { useLanguage } from '../contexts/LanguageContext';
 
 // Styled Components
 const LandingAppBar = styled(AppBar)`
@@ -429,7 +422,7 @@ const SocialButton = styled(IconButton)`
 `;
 
 const LandingPage = () => {
-  const [isRTL] = useLanguage();
+  const { language } = useLanguage();
   const navigate = useNavigate();
 
   const handleNavigation = (path) => {
@@ -437,7 +430,7 @@ const LandingPage = () => {
   };
 
   return (
-    <Box dir={isRTL ? 'rtl' : 'ltr'}>
+    <Box dir={language === 'ar' ? 'rtl' : 'ltr'}>
       {/* Navigation Bar */}
       <AppBar position="fixed" sx={{ backgroundColor: 'rgba(255, 255, 255, 0.9)', boxShadow: 2 }}>
         <Container maxWidth="lg">
@@ -464,31 +457,31 @@ const LandingPage = () => {
                 onClick={() => handleNavigation('/')}
                 sx={{ color: '#2e2b2b' }}
               >
-                {isRTL ? 'الرئيسية' : 'Home'}
+                {language === 'ar' ? 'الرئيسية' : 'Home'}
               </Button>
               <Button 
                 onClick={() => handleNavigation('/features')}
                 sx={{ color: '#2e2b2b' }}
               >
-                {isRTL ? 'المميزات' : 'Features'}
+                {language === 'ar' ? 'المميزات' : 'Features'}
               </Button>
               <Button 
                 onClick={() => handleNavigation('/services')}
                 sx={{ color: '#2e2b2b' }}
               >
-                {isRTL ? 'الخدمات' : 'Services'}
+                {language === 'ar' ? 'الخدمات' : 'Services'}
               </Button>
               <Button 
                 onClick={() => handleNavigation('/testimonials')}
                 sx={{ color: '#2e2b2b' }}
               >
-                {isRTL ? 'آراء العملاء' : 'Testimonials'}
+                {language === 'ar' ? 'آراء العملاء' : 'Testimonials'}
               </Button>
               <Button 
                 onClick={() => handleNavigation('/contact')}
                 sx={{ color: '#2e2b2b' }}
               >
-                {isRTL ? 'اتصل بنا' : 'Contact'}
+                {language === 'ar' ? 'اتصل بنا' : 'Contact'}
               </Button>
             </Stack>
 
@@ -504,7 +497,7 @@ const LandingPage = () => {
                   }
                 }}
               >
-                {isRTL ? 'تسجيل الدخول' : 'Login'}
+                {language === 'ar' ? 'تسجيل الدخول' : 'Login'}
               </Button>
             </Box>
 
@@ -560,7 +553,7 @@ const LandingPage = () => {
                     mb: 3
                   }}
                 >
-                  {isRTL ? 'مستقبل الرعاية الصحية' : 'The Future of Healthcare'}
+                  {language === 'ar' ? 'مستقبل الرعاية الصحية' : 'The Future of Healthcare'}
                 </Typography>
                 <Typography variant="h2" 
                   sx={{ 
@@ -570,7 +563,7 @@ const LandingPage = () => {
                     mb: 4
                   }}
                 >
-                  {isRTL ? 'ذكاء اصطناعي متقدم لتحسين تجربة الاستشارات الطبية' : 'Advanced AI for Enhanced Medical Consultations'}
+                  {language === 'ar' ? 'ذكاء اصطناعي متقدم لتحسين تجربة الاستشارات الطبية' : 'Advanced AI for Enhanced Medical Consultations'}
                 </Typography>
                 <Button 
                   variant="contained"
@@ -582,7 +575,7 @@ const LandingPage = () => {
                     }
                   }}
                 >
-                  {isRTL ? 'ابدأ الآن' : 'Get Started'}
+                  {language === 'ar' ? 'ابدأ الآن' : 'Get Started'}
                 </Button>
               </motion.div>
             </Grid>
@@ -683,7 +676,7 @@ const LandingPage = () => {
                   color: '#2e2b2b'
                 }}
               >
-                {isRTL ? 'مميزات حوار' : 'Hewar Features'}
+                {language === 'ar' ? 'مميزات حوار' : 'Hewar Features'}
               </Typography>
               <Typography 
                 variant="h6" 
@@ -694,7 +687,7 @@ const LandingPage = () => {
                   mx: 'auto'
                 }}
               >
-                {isRTL 
+                {language === 'ar' 
                   ? 'اكتشف كيف يمكن لتطبيق حوار أن يحسن تجربة الاستشارات الطبية ويزيد من كفاءة الأطباء'
                   : 'Discover how Hewar can enhance medical consultations and improve physician efficiency'}
               </Typography>
@@ -721,12 +714,12 @@ const LandingPage = () => {
                     <Avatar sx={{ bgcolor: '#7cdfd3', mr: 2 }}>
                       <TranslateIcon />
                     </Avatar>
-                    <Typography variant="h6" gutterBottom align={isRTL ? 'right' : 'left'}>
-                      {isRTL ? 'ترجمة فورية' : 'Real-time Translation'}
+                    <Typography variant="h6" gutterBottom align={language === 'ar' ? 'right' : 'left'}>
+                      {language === 'ar' ? 'ترجمة فورية' : 'Real-time Translation'}
                     </Typography>
                   </Box>
-                  <Typography color="text.secondary" align={isRTL ? 'right' : 'left'}>
-                    {isRTL
+                  <Typography color="text.secondary" align={language === 'ar' ? 'right' : 'left'}>
+                    {language === 'ar'
                       ? 'ترجمة المحادثات الطبية بين الطبيب والمريض بشكل فوري ودقيق، مما يتيح تواصلاً أفضل وتجربة أكثر راحة للمرضى من مختلف الخلفيات اللغوية.'
                       : 'Instant and accurate translation of medical conversations between doctor and patient, enabling better communication and a more comfortable experience for patients from diverse linguistic backgrounds.'}
                   </Typography>
@@ -752,12 +745,12 @@ const LandingPage = () => {
                     <Avatar sx={{ bgcolor: '#7cdfd3', mr: 2 }}>
                       <PsychologyIcon />
                     </Avatar>
-                    <Typography variant="h6" gutterBottom align={isRTL ? 'right' : 'left'}>
-                      {isRTL ? 'تشخيص ذكي' : 'Smart Diagnosis'}
+                    <Typography variant="h6" gutterBottom align={language === 'ar' ? 'right' : 'left'}>
+                      {language === 'ar' ? 'تشخيص ذكي' : 'Smart Diagnosis'}
                     </Typography>
                   </Box>
-                  <Typography color="text.secondary" align={isRTL ? 'right' : 'left'}>
-                    {isRTL
+                  <Typography color="text.secondary" align={language === 'ar' ? 'right' : 'left'}>
+                    {language === 'ar'
                       ? 'اقتراح رموز ICD-10 وتحليل المحادثة باستخدام الذكاء الاصطناعي، مما يساعد الأطباء على اتخاذ قرارات أكثر دقة وسرعة في التشخيص.'
                       : 'AI-powered conversation analysis and ICD-10 code suggestions, helping physicians make more accurate and faster diagnostic decisions.'}
                   </Typography>
@@ -783,12 +776,12 @@ const LandingPage = () => {
                     <Avatar sx={{ bgcolor: '#7cdfd3', mr: 2 }}>
                       <CloudUploadIcon />
                     </Avatar>
-                    <Typography variant="h6" gutterBottom align={isRTL ? 'right' : 'left'}>
-                      {isRTL ? 'تكامل مع EMR' : 'EMR Integration'}
+                    <Typography variant="h6" gutterBottom align={language === 'ar' ? 'right' : 'left'}>
+                      {language === 'ar' ? 'تكامل مع EMR' : 'EMR Integration'}
                     </Typography>
                   </Box>
-                  <Typography color="text.secondary" align={isRTL ? 'right' : 'left'}>
-                    {isRTL
+                  <Typography color="text.secondary" align={language === 'ar' ? 'right' : 'left'}>
+                    {language === 'ar'
                       ? 'تكامل سلس مع أنظمة السجلات الطبية الإلكترونية، مما يوفر الوقت ويقلل من الأخطاء في إدخال البيانات ويحسن تدفق العمل الطبي.'
                       : 'Seamless integration with Electronic Medical Record systems, saving time, reducing data entry errors, and improving medical workflow.'}
                   </Typography>
@@ -821,7 +814,7 @@ const LandingPage = () => {
                   }
                 }}
               >
-                {isRTL ? 'اكتشف جميع المميزات' : 'Explore All Features'}
+                {language === 'ar' ? 'اكتشف جميع المميزات' : 'Explore All Features'}
               </Button>
             </motion.div>
           </Box>
@@ -854,7 +847,7 @@ const LandingPage = () => {
                   color: '#2e2b2b'
                 }}
               >
-                {isRTL ? 'كيف يعمل حوار' : 'How Hewar Works'}
+                {language === 'ar' ? 'كيف يعمل حوار' : 'How Hewar Works'}
               </Typography>
               <Typography 
                 variant="h6" 
@@ -865,7 +858,7 @@ const LandingPage = () => {
                   mx: 'auto'
                 }}
               >
-                {isRTL 
+                {language === 'ar' 
                   ? 'عملية بسيطة وفعالة لتحسين التواصل الطبي وتوثيق الاستشارات'
                   : 'A simple and effective process to enhance medical communication and consultation documentation'}
               </Typography>
@@ -895,12 +888,12 @@ const LandingPage = () => {
                     <ListItemText 
                       primary={
                         <Typography variant="h6">
-                          {isRTL ? 'بدء الاستشارة' : 'Start Consultation'}
+                          {language === 'ar' ? 'بدء الاستشارة' : 'Start Consultation'}
                         </Typography>
                       } 
                       secondary={
                         <Typography variant="body1" color="text.secondary" sx={{ mt: 1 }}>
-                          {isRTL 
+                          {language === 'ar' 
                             ? 'ابدأ جلسة جديدة واختر لغات الطبيب والمريض للترجمة الفورية'
                             : 'Initiate a new session and select physician and patient languages for real-time translation'}
                         </Typography>
@@ -915,12 +908,12 @@ const LandingPage = () => {
                     <ListItemText 
                       primary={
                         <Typography variant="h6">
-                          {isRTL ? 'إجراء المحادثة' : 'Conduct Conversation'}
+                          {language === 'ar' ? 'إجراء المحادثة' : 'Conduct Conversation'}
                         </Typography>
                       } 
                       secondary={
                         <Typography variant="body1" color="text.secondary" sx={{ mt: 1 }}>
-                          {isRTL 
+                          {language === 'ar' 
                             ? 'تحدث بشكل طبيعي بينما يقوم حوار بترجمة وتسجيل المحادثة في الوقت الفعلي'
                             : 'Speak naturally while Hewar translates and records the conversation in real-time'}
                         </Typography>
@@ -935,12 +928,12 @@ const LandingPage = () => {
                     <ListItemText 
                       primary={
                         <Typography variant="h6">
-                          {isRTL ? 'مراجعة الملخص' : 'Review Summary'}
+                          {language === 'ar' ? 'مراجعة الملخص' : 'Review Summary'}
                         </Typography>
                       } 
                       secondary={
                         <Typography variant="body1" color="text.secondary" sx={{ mt: 1 }}>
-                          {isRTL 
+                          {language === 'ar' 
                             ? 'راجع ملاحظات SOAP المولدة تلقائيًا واقتراحات رموز ICD-10 وعدلها حسب الحاجة'
                             : 'Review auto-generated SOAP notes and ICD-10 code suggestions and edit as needed'}
                         </Typography>
@@ -955,12 +948,12 @@ const LandingPage = () => {
                     <ListItemText 
                       primary={
                         <Typography variant="h6">
-                          {isRTL ? 'حفظ وتصدير' : 'Save and Export'}
+                          {language === 'ar' ? 'حفظ وتصدير' : 'Save and Export'}
                         </Typography>
                       } 
                       secondary={
                         <Typography variant="body1" color="text.secondary" sx={{ mt: 1 }}>
-                          {isRTL 
+                          {language === 'ar' 
                             ? 'احفظ التقرير النهائي في نظام EMR أو صدره بتنسيق PDF للاستخدام المستقبلي'
                             : 'Save the final report to your EMR system or export as PDF for future reference'}
                         </Typography>
@@ -1057,16 +1050,16 @@ const LandingPage = () => {
             {/* Company Info */}
             <Grid item xs={12} md={4}>
               <Typography variant="h6" sx={{ mb: 2, color: '#7cdfd3' }}>
-                {isRTL ? 'حوار الذكاء الطبي' : 'Hewar Medical AI'}
+                {language === 'ar' ? 'حوار الذكاء الطبي' : 'Hewar Medical AI'}
               </Typography>
               <Typography variant="body2" sx={{ mb: 2, color: 'rgba(255,255,255,0.7)' }}>
-                {isRTL 
+                {language === 'ar' 
                   ? 'نقدم حلول الذكاء الاصطناعي المتقدمة للرعاية الصحية في المملكة العربية السعودية'
                   : 'Providing advanced AI healthcare solutions in Saudi Arabia'}
               </Typography>
               <Box sx={{ mb: 3 }}>
                 <Typography variant="body2" sx={{ color: '#7cdfd3', mb: 1 }}>
-                  {isRTL ? 'المملكة العربية السعودية' : 'Saudi Arabia'}
+                  {language === 'ar' ? 'المملكة العربية السعودية' : 'Saudi Arabia'}
                 </Typography>
               </Box>
             </Grid>
@@ -1074,7 +1067,7 @@ const LandingPage = () => {
             {/* Founders */}
             <Grid item xs={12} md={4}>
               <Typography variant="h6" sx={{ mb: 2, color: '#7cdfd3' }}>
-                {isRTL ? 'المؤسسون' : 'Founders'}
+                {language === 'ar' ? 'المؤسسون' : 'Founders'}
               </Typography>
               <List sx={{ mb: 2 }}>
                 <ListItem sx={{ px: 0 }}>
@@ -1121,13 +1114,13 @@ const LandingPage = () => {
             {/* Social & Professional Links */}
             <Grid item xs={12} md={4}>
               <Typography variant="h6" sx={{ mb: 2, color: '#7cdfd3' }}>
-                {isRTL ? 'تواصل معنا' : 'Connect With Us'}
+                {language === 'ar' ? 'تواصل معنا' : 'Connect With Us'}
               </Typography>
               
               {/* Social Media */}
               <Box sx={{ mb: 3 }}>
                 <Typography variant="body2" sx={{ mb: 2, color: 'rgba(255,255,255,0.7)' }}>
-                  {isRTL ? 'منصات التواصل الاجتماعي' : 'Social Media'}
+                  {language === 'ar' ? 'منصات التواصل الاجتماعي' : 'Social Media'}
                 </Typography>
                 <Stack direction="row" spacing={1}>
                   <SocialButton 
@@ -1160,7 +1153,7 @@ const LandingPage = () => {
               {/* Professional Platforms */}
               <Box>
                 <Typography variant="body2" sx={{ mb: 2, color: 'rgba(255,255,255,0.7)' }}>
-                  {isRTL ? 'المنصات المهنية' : 'Professional Platforms'}
+                  {language === 'ar' ? 'المنصات المهنية' : 'Professional Platforms'}
                 </Typography>
                 <Stack direction="row" spacing={1}>
                   <SocialButton 
@@ -1206,7 +1199,7 @@ const LandingPage = () => {
             textAlign: 'center'
           }}>
             <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.5)' }}>
-              {isRTL ? 'جميع الحقوق محفوظة' : 'All rights reserved.'} Hewar Medical AI {new Date().getFullYear()}
+              {language === 'ar' ? 'جميع الحقوق محفوظة' : 'All rights reserved.'} Hewar Medical AI {new Date().getFullYear()}
             </Typography>
           </Box>
         </Container>

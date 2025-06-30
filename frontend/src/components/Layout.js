@@ -62,7 +62,7 @@ const StyledListItem = styled(ListItem)(({ theme }) => ({
   },
 }));
 
-const Layout = () => {
+const Layout = ({ children }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { language, toggleLanguage } = useLanguage();
@@ -273,8 +273,7 @@ const Layout = () => {
           pb: 3,
         }}
       >
-        {/* This is where the page content will be rendered */}
-        {/* {children} */}
+        {children}
       </Box>
 
       <Menu
